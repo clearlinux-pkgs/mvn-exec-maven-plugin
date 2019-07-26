@@ -4,11 +4,13 @@
 #
 Name     : mvn-exec-maven-plugin
 Version  : 1.6.0
-Release  : 2
+Release  : 3
 URL      : https://github.com/mojohaus/exec-maven-plugin/archive/exec-maven-plugin-1.6.0.tar.gz
 Source0  : https://github.com/mojohaus/exec-maven-plugin/archive/exec-maven-plugin-1.6.0.tar.gz
 Source1  : https://repo.maven.apache.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.jar
 Source2  : https://repo.maven.apache.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.pom
+Source3  : https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.jar
+Source4  : https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -36,10 +38,16 @@ data components for the mvn-exec-maven-plugin package.
 
 %install
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.pom
 
 
 %files
@@ -47,5 +55,7 @@ cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.jar
+/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.pom
 /usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.jar
 /usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.pom
