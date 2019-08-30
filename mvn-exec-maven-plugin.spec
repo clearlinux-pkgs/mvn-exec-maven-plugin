@@ -4,17 +4,20 @@
 #
 Name     : mvn-exec-maven-plugin
 Version  : 1.6.0
-Release  : 3
+Release  : 4
 URL      : https://github.com/mojohaus/exec-maven-plugin/archive/exec-maven-plugin-1.6.0.tar.gz
 Source0  : https://github.com/mojohaus/exec-maven-plugin/archive/exec-maven-plugin-1.6.0.tar.gz
 Source1  : https://repo.maven.apache.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.jar
 Source2  : https://repo.maven.apache.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.pom
 Source3  : https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.jar
 Source4  : https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.pom
+Source5  : https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.5.0/exec-maven-plugin-1.5.0.jar
+Source6  : https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/1.5.0/exec-maven-plugin-1.5.0.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-exec-maven-plugin-data = %{version}-%{release}
+Requires: mvn-exec-maven-plugin-license = %{version}-%{release}
 
 %description
 # MojoHaus Exec Maven Plugin
@@ -32,11 +35,22 @@ Group: Data
 data components for the mvn-exec-maven-plugin package.
 
 
+%package license
+Summary: license components for the mvn-exec-maven-plugin package.
+Group: Default
+
+%description license
+license components for the mvn-exec-maven-plugin package.
+
+
 %prep
+%setup -q -n exec-maven-plugin-exec-maven-plugin-1.6.0
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-exec-maven-plugin
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/mvn-exec-maven-plugin/LICENSE.txt
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0
 cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.jar
 
@@ -49,6 +63,12 @@ cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1
 cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.pom
 
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.5.0
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.5.0/exec-maven-plugin-1.5.0.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.5.0
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.5.0/exec-maven-plugin-1.5.0.pom
+
 
 %files
 %defattr(-,root,root,-)
@@ -57,5 +77,11 @@ cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/org/codehaus/mojo/exec-
 %defattr(-,root,root,-)
 /usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.jar
 /usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.3.1/exec-maven-plugin-1.3.1.pom
+/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.5.0/exec-maven-plugin-1.5.0.jar
+/usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.5.0/exec-maven-plugin-1.5.0.pom
 /usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.jar
 /usr/share/java/.m2/repository/org/codehaus/mojo/exec-maven-plugin/1.6.0/exec-maven-plugin-1.6.0.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-exec-maven-plugin/LICENSE.txt
